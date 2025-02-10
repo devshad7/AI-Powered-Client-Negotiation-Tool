@@ -1,4 +1,7 @@
+import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
+import AuthHandler from "@/components/AuthHandler";
+import { Toaster } from "react-hot-toast";
 
 export const metadata = {
   title: "NegotiaAI | AI-Powered Negotiation Assistant",
@@ -7,10 +10,19 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en">
-      <body suppressHydrationWarning>
-        {children}
-      </body>
-    </html>
+    <ClerkProvider
+      appearance={{
+        layout: {
+          unsafe_disableDevelopmentModeWarnings: true,
+        },
+      }}>
+      <html lang="en">
+        <body suppressHydrationWarning>
+          <AuthHandler />
+          <Toaster />
+          {children}
+        </body>
+      </html>
+    </ClerkProvider>
   );
 }
