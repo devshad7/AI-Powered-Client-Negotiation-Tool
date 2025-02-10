@@ -2,6 +2,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import "./globals.css";
 import AuthHandler from "@/components/AuthHandler";
 import { Toaster } from "react-hot-toast";
+import { Analytics } from "@vercel/analytics/react"
 
 export const metadata = {
   title: "NegotiaAI | AI-Powered Negotiation Assistant",
@@ -21,6 +22,7 @@ export default function RootLayout({ children }) {
           <AuthHandler />
           <Toaster />
           {children}
+          <Analytics />
         </body>
       </html>
     </ClerkProvider>
