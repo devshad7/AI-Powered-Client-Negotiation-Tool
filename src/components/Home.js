@@ -7,7 +7,7 @@ import { BadgePercent, Bot, LayoutPanelTop, MoveRight } from "lucide-react";
 import HomeNav from "./HomeNav";
 
 const Home = () => {
-    
+
     return (
         <>
             <HomeNav />
@@ -22,7 +22,7 @@ const Home = () => {
                     AI-Powered Negotiation Assistant
                 </motion.h1>
                 <p className="mt-4 text-lg text-gray-600 max-w-2xl">
-                    Close better deals effortlessly with AI-generated smart responses. Join our waitlist now!
+                    Negotiate with confidence using AI-driven smart replies. Get better deals, faster and smarter. Join our beta now!
                 </p>
 
                 <div className="mt-10 flex items-center justify-center gap-x-6">
@@ -38,9 +38,9 @@ const Home = () => {
 
                 {/* Features Section */}
                 <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl">
-                    <FeatureCard icon={<Bot />} title="AI Smart Replies" description="Instantly craft professional negotiation responses." />
-                    <FeatureCard icon={<BadgePercent />} title="Market-Based Pricing" description="Justify your rates with AI-backed data." />
-                    <FeatureCard icon={<LayoutPanelTop />} title="Proposal Templates" description="Get ready-made proposals to win clients faster." />
+                    <FeatureCard icon={<Bot />} title="AI Smart Replies" description="Negotiate smarter, not harder. Instantly craft persuasive, professional responses tailored to any deal." />
+                    <FeatureCard icon={<BadgePercent />} title="Market-Based Pricing" description="Back your pricing with confidence. Get AI-driven insights to justify your rates and close better deals." />
+                    <FeatureCard icon={<LayoutPanelTop />} title="Proposal Templates" description="Win clients faster! Use ready-made, high-converting proposal templates for seamless negotiations." />
                 </div>
             </div>
         </>
