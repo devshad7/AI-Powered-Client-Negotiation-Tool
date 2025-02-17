@@ -22,7 +22,9 @@ export default {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
-					user: '#f3f3f3'
+					user: '#f3f3f3',
+					errorCard: '#190002',
+					errorBorder: '#6a0210'
 				},
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',

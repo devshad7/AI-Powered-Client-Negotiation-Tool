@@ -12,9 +12,6 @@ const Home = () => {
         <>
             <HomeNav />
             <div className="md:py-24 py-16 flex flex-col items-center justify-center px-6 text-center">
-                <div className="mb-5">
-                    <a href="https://www.producthunt.com/posts/negotiaai?embed=true&utm_source=badge-featured&utm_medium=badge&utm_souce=badge-negotiaai" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=866595&theme=light&t=1739251340502" alt="NegotiaAI - AI&#0045;Powered&#0032;Negotiation&#0032;Assistant&#0032;for&#0032;Better&#0032;Deals | Product Hunt" className="w-[150px] h-auto" width="250" height="54" /></a>
-                </div>
                 {/* Hero Section */}
                 <motion.h1
                     className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-gray-700 to-gray-800 text-transparent bg-clip-text"
@@ -31,10 +28,10 @@ const Home = () => {
                 <div className="mt-10 flex items-center justify-center gap-x-6">
                     <Link href={'/chat'}>
                         <Button type="submit" className="hover:bg-emerald-700 bg-emerald-600">
-                            Get Started
+                            Try Now
                         </Button>
                     </Link>
-                    <Link href={'/'} className='text-sm font-semibold leading-6 flex items-center gap-1'>
+                    <Link href={'/getting-started'} className='text-sm font-semibold leading-6 flex items-center gap-1'>
                         Learn more <MoveRight />
                     </Link>
                 </div>

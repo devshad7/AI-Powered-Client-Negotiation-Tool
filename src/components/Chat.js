@@ -11,6 +11,7 @@ import { Send } from "lucide-react";
 import remarkGfm from "remark-gfm";
 import Markdown from "react-markdown";
 import rehypeRaw from "rehype-raw";
+import { ErrorMsg, LimitError } from "./ui/error-message";
 
 export default function Chat({ chatId }) {
     const { user } = useUser();
@@ -83,6 +84,7 @@ export default function Chat({ chatId }) {
             const aiMessage = {
                 role: "assistant",
                 content: data?.message || "No response received",
+                // content: "No response received",
                 createdAt: new Date().toISOString(),
             };
 
@@ -112,7 +114,7 @@ export default function Chat({ chatId }) {
     }
 
     return (
-        <div className="max-w-5xl mx-auto p-4 bg-white rounded-lg h-[85vh] flex flex-col">
+        <div className="max-w-5xl mx-auto py-4 md:py-10 px-4 bg-white rounded-lg h-[85vh] flex flex-col">
             <div className="flex-1 overflow-y-auto p-4 space-y-4 scrollbar-hide flex flex-col">
                 {messages.map((msg, index) => (
                     <motion.div
@@ -120,23 +122,31 @@ export default function Chat({ chatId }) {
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.3 }}
-                        className={`py-2 px-4 rounded-full max-w-[60%] whitespace-pre-wrap 
-                ${msg.role === "user" ? "bg-primary-user self-end text-right" : "self-start text-left"}`}
+                        className={`py-3 px-5 rounded-3xl max-w-[100%] md:max-w-[70%] whitespace-pre-wrap 
+                ${msg.role === "user" ? "bg-primary-user self-end max-w-[70%]" : "self-start text-left"}`}
                     >
-                        <Markdown
-                            remarkPlugins={[remarkGfm]}
-                            rehypePlugins={[rehypeRaw]}
-                            className="prose max-w-none">
-                            {msg.content.replaceAll("\n", "  \n")}
-                        </Markdown>
+                        {msg.content === "No response received" ? (
+                            <ErrorMsg />
+                        ) : (
+                            msg.content === "Limit exceeded! You have used all your request limits." ? (
+                                <LimitError />
+                            ) : (
+                                <Markdown
+                                    remarkPlugins={[remarkGfm]}
+                                    rehypePlugins={[rehypeRaw]}
+                                    className="prose max-w-none">
+                                    {msg.content.replaceAll("\n", "  \n")}
+                                </Markdown>
+                            )
+                        )}
                     </motion.div>
                 ))}
 
                 {isTyping && (
-                    <motion.div 
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.3 }}
+                    <motion.div
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.3 }}
                         className="self-start text-left px-4 py-2 max-w-[60%]"
                     >
                         <span className="text-gray-600">thinking...</span>
@@ -144,7 +154,7 @@ export default function Chat({ chatId }) {
                 )}
                 <div ref={messagesEndRef} />
             </div>
-            <div className="md:p-4 relative top-10 flex items-center gap-2">
+            <div className="md:p-4 py-4 px-2 max-w-5xl mx-auto w-[90%] bg-white md:w-full fixed bottom-0 md:bottom-10 flex items-center gap-2">
                 <Input
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
